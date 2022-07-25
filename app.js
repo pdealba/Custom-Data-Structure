@@ -16,6 +16,14 @@ class LinkedList {
     }
   }
 
+  prepend(value) {
+    const newNode = { value: value, next: this.head };
+    this.head = newNode;
+    if (!this.tail) {
+      this.tail = newNode;
+    }
+  }
+
   toArray() {
     const element = [];
 
@@ -28,4 +36,10 @@ class LinkedList {
   }
 }
 
+const linkedList1 = new LinkedList();
+linkedList1.append(1);
+linkedList1.append("Hello there");
+linkedList1.append(true);
+linkedList1.append(18.51);
 
+console.log(linkedList1.toArray());
