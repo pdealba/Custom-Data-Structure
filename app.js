@@ -15,6 +15,17 @@ class LinkedList {
       this.head = newNode;
     }
   }
+
+  toArray() {
+    const element = [];
+
+    let curNode = this.head;
+    while (curNode) {
+      element.push(curNode);
+      curNode = curNode.next;
+    }
+    return element;
+  }
 }
 
 
