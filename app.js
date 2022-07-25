@@ -24,26 +24,43 @@ class LinkedList {
     }
   }
 
+  find(value) {
+    if (!this.head) {
+      return null;
+    }
+
+    let curNode = this.head;
+
+    while (curNode) {
+      if (curNode.value === value) {
+        return curNode;
+      }
+      curNode = curNode.next;
+    }
+
+    return null;
+  }
+
   delete(value) {
-    if(!this.head) {
+    if (!this.head) {
       return;
     }
 
-    while(this.head && this.head.value === value) {
+    while (this.head && this.head.value === value) {
       this.head = this.head.next;
     }
 
     let curNode = this.head;
 
-    while(curNode.next) {
-      if(curNode.next.value === value) {
+    while (curNode.next) {
+      if (curNode.next.value === value) {
         curNode.next = curNode.next.next;
       } else {
         curNode = curNode.next;
       }
     }
 
-    if(this.tail.value === value) {
+    if (this.tail.value === value) {
       this.tail = curNode;
     }
   }
@@ -63,16 +80,19 @@ class LinkedList {
 const linkedList1 = new LinkedList();
 linkedList1.append(1);
 linkedList1.append("Hello there");
-linkedList1.append('Pedro');
-linkedList1.append('Pedro');
+linkedList1.append("Pedro");
+linkedList1.append("Pedro");
 linkedList1.append(true);
 linkedList1.append(18.51);
-linkedList1.prepend('First Value')
+linkedList1.prepend("First Value");
 
 console.log(linkedList1.toArray());
 
-linkedList1.delete('First Value');
-linkedList1.delete('Pedro');
+linkedList1.delete("First Value");
+linkedList1.delete("Pedro");
 linkedList1.delete(18.51);
 
 console.log(linkedList1.toArray());
+
+console.log(linkedList1.find("Pedro"));
+console.log(linkedList1.find("Hello there"));
